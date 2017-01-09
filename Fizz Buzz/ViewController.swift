@@ -9,16 +9,51 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var numberLabel: UILabel!
+    var number = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func fizzBuzz (_ number:Int) -> (String, UIColor) {
+        if number % 15 == 0{
+        return ("Fizz\nBuzz", UIColor.orange)
+    }
+    
+    else if number % 3 == 0 {
+        return ("Fizz", UIColor.green)
+    }
+    else if number % 5 == 0 {
+            return ("Buzz", UIColor.blue)
+    }
+        else {
+            return (String (number), UIColor.black)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
+
+
+}
+
+
+
+
+@IBAction func onTappedViewController(_ sender: AnyObject) {
+    number += 1
+    let myTuple = fizzBuzz(number)
+    numberLabel.text = myTuple.0
+    view.backgroundColor = myTuple.1
+    
+}
+@IBAction func onLongPressViewController(_ sender: AnyObject) {
+    number = 0
+    numberLabel.text = ""
+    view.backgroundColor = UIColor.black
+    
+}
+
+
 
 
 }
